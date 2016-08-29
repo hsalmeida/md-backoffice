@@ -1,13 +1,13 @@
 angular.module('md').controller('HomeController', ['$scope', '$rootScope', '$state', 'Users', '$cookies',
-    'Offers',
-    function ($scope, $rootScope, $state, Users, $cookies, Offers) {
+    'Offers', 'Employees',
+    function ($scope, $rootScope, $state, Users, $cookies, Offers, Employees) {
         $rootScope.bodybg = {
             background: '#FFFFFF'
         };
         $scope.offers = [];
         $scope.offer = {
             "employer": "",
-            "adrress": "",
+            "address": "",
             "bedrooms": 1,
             "iron": true,
             "cook": true,
@@ -22,6 +22,13 @@ angular.module('md').controller('HomeController', ['$scope', '$rootScope', '$sta
             waitingCircular.show();
 
             Offers.all().then(function (offers) {
+
+                angular.forEach(offers, function (offer, offerId){
+                    Employees.getById(offer.employer).then(function (employer) {
+                        offer.employerDetail = employer;
+                    })
+                });
+
                 $scope.offers = offers;
             });
 
