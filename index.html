@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>
+<html lang="pt-BR" ng-app="md" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html lang="pt-BR" ng-app="md" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html lang="pt-BR" ng-app="md" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="pt-BR" ng-app="md" class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"/>
+    <meta name="description" content="">
+    <meta name="viewport"
+          content="minimal-ui, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width">
+    <title>MD BACKOFFICE</title>
+
+    <link rel="stylesheet" href="css/libs/bootstrap.min.css">
+    <link rel="stylesheet" href="css/libs/font-awesome.min.css">
+    <link rel="stylesheet" href="css/md.css">
+
+</head>
+<body ng-app="md" ng-style="bodybg" class="image-cover">
+
+<div class="m-app-loading" ng-animate-children>
+    <style type="text/css">
+        div.m-app-loading {
+            position: fixed;
+        }
+
+        div.m-app-loading div.animated-container {
+
+            background: #ffffff; /* For browsers that do not support gradients */
+            background: -webkit-linear-gradient(141deg, #0b0b0b 0%, #1fc8db 51%, #ffffff 75%); /* For Safari 5.1 to 6.0 */
+            background: -o-linear-gradient(141deg, #0b0b0b 0%, #1fc8db 51%, #ffffff 75%); /* For Opera 11.1 to 12.0 */
+            background: -moz-linear-gradient(141deg, #0b0b0b 0%, #1fc8db 51%, #ffffff 75%); /* For Firefox 3.6 to 15 */
+            background: linear-gradient(141deg, #0b0b0b 0%, #1fc8db 51%, #ffffff 75%); /* Standard syntax */
+
+            bottom: 0;
+            left: 0;
+            opacity: 1.0;
+            position: fixed;
+            right: 0;
+            top: 0;
+            z-index: 999999;
+        }
+
+        /* Used to initialize the ng-leave animation state. */
+        div.m-app-loading div.animated-container.ng-leave {
+            opacity: 1.0;
+            transition: all linear 200ms;
+            -webkit-transition: all linear 200ms;
+        }
+
+        /* Used to set the end properties of the ng-leave animation state. */
+        div.m-app-loading div.animated-container.ng-leave-active {
+            opacity: 0;
+        }
+
+        div.m-app-loading div.messaging {
+            color: #0b0b0b;
+            font-family: monospace;
+            left: 0;
+            margin-top: -37px;
+            position: absolute;
+            right: 0;
+            text-align: center;
+            top: 50%;
+        }
+
+        div.m-app-loading h1 {
+            font-size: 26px;
+            line-height: 35px;
+            margin: 0 0 20px 0;
+        }
+
+        div.m-app-loading p {
+            font-size: 18px;
+            line-height: 14px;
+            margin: 0;
+        }
+    </style>
+
+    <div class="animated-container">
+        <div class="messaging">
+            <h1>
+                Todos os componentes estão sendo carregados
+            </h1>
+
+            <p>
+                Aguarde comandante
+            </p>
+        </div>
+    </div>
+</div>
+<div ui-view class="mainsec"></div>
+
+<script src="js/libs/angular.min.js"></script>
+<script src="js/libs/angular-animate.min.js"></script>
+<script src="js/libs/angular-ui-router.js"></script>
+<script src="js/libs/angular-resource.min.js"></script>
+<script src="js/libs/angular-messages.min.js"></script>
+<script src="js/libs/angular-cookies.min.js"></script>
+<script src="js/libs/angular-mongolab.js"></script>
+
+<script src="js/libs/jquery.js"></script>
+
+<script src="js/libs/bootstrap.min.js"></script>
+<script src="js/libs/ui-bootstrap-tpls-2.0.1.min.js"></script>
+
+<script src="js/libs/waiting-for.js"></script>
+<script src="js/libs/waiting-circular.js"></script>
+
+<script src="js/libs/respond.min.js"></script>
+
+<script src="js/app/md.js"></script>
+<script src="js/app/md-routes.js"></script>
+<script src="js/app/md-services.js"></script>
+<script src="js/app/md-directives.js"></script>
+
+<script src="js/app/components/login/login.js"></script>
+<script src="js/app/components/home/home.js"></script>
+
+</body>
+</html>

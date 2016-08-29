@@ -1,0 +1,24 @@
+<div class="page-content wow fadeIn" data-wow-duration="2s" style="visibility: visible; animation-duration: 2s; animation-name: fadeIn;" ng-controller="LoginController" ng-init="initLogin()">
+
+
+    <h2 class="text-center">LOGIN</h2>
+
+    <form class="form-horizontal">
+        <div class="grid">
+            <div class="col-xs-12">
+                <label>Usuario:&nbsp;</label>
+                <input type="text" required ng-model="usuario" ng-focus="errorLogin = ''">
+            </div>
+            <div class="col-xs-12">
+                <label>Senha:&nbsp;</label>
+                <input type="password" required ng-model="senha" ng-focus="errorLogin = ''">
+            </div>
+            <div class="col-xs-12 alert alert-danger" ng-show="errorLogin !== ''">
+                <span>{{errorLogin}}</span>
+            </div>
+            <div class="col-xs-12 btn-login">
+                <button ng-click="login()" type="submit" class="btn btn-primary btn-lg">ENTRAR</button>
+            </div>
+        </div>
+    </form>
+</div>
