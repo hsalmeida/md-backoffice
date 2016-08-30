@@ -1,6 +1,6 @@
 angular.module("md", [
     'ui.router', 'ngResource', 'mongolabResourceHttp', 'ngAnimate', 'ui.bootstrap', 'ngMessages',
-    'ngCookies'
+    'ngCookies', 'angular.filter', 'angularUtils.directives.dirPagination'
 ])
     .run(function ($rootScope, $state, $cookies) {
 

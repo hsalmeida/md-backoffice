@@ -11,6 +11,14 @@ body {
     font-size: 40px;
 }
 
+.sortorder:after {
+    content: '\25b2';
+}
+
+.sortorder.reverse:after {
+    content: '\25bc';
+}
+
 .classe-header {
     color: #97daea;
 }
@@ -45,7 +53,7 @@ body {
 }
 
 .md-navbar {
-    height: 64px;
+    height: 51px;
 }
 
 .md-brand {
@@ -124,6 +132,10 @@ body {
 
 .resources-list {
     min-height: 24px;
+}
+
+.list-group-item-action {
+    cursor: pointer;
 }
 
 .accordion-progress a {

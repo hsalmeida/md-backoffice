@@ -32,4 +32,11 @@ angular.module('md')
             replace: true,
             templateUrl: 'views/directives/refuse-list.html'
         };
+    })
+    .directive('offerSummary', function () {
+        return {
+            restrict: 'A',
+            replace: true,
+            templateUrl: 'views/directives/offer-summary.html'
+        };
     });

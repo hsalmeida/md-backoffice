@@ -5,102 +5,11 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <h3 class="page-header">Ofertas de Trabalho</h3>
+                <h4>Ofertas de Trabalho</h4>
             </div>
         </div>
 
-        <div class="row">
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-thumbs-up fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">26</div>
-                                <div>Aceitas</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a ui-sref="home">
-                        <div class="panel-footer">
-                            <span class="pull-left">Detalhes</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-exclamation fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">2</div>
-                                <div>Recusadas</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a ui-sref="home">
-                        <div class="panel-footer">
-                            <span class="pull-left">Detalhes</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-success">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-star-o fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">0</div>
-                                <div>Avaliadas</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a ui-sref="home">
-                        <div class="panel-footer">
-                            <span class="pull-left">Detalhes</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="panel panel-danger">
-                    <div class="panel-heading">
-                        <div class="row">
-                            <div class="col-xs-3">
-                                <i class="fa fa-ban fa-5x"></i>
-                            </div>
-                            <div class="col-xs-9 text-right">
-                                <div class="huge">0</div>
-                                <div>Canceladas</div>
-                            </div>
-                        </div>
-                    </div>
-                    <a ui-sref="home">
-                        <div class="panel-footer">
-                            <span class="pull-left">Detalhes</span>
-                            <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                            <div class="clearfix"></div>
-                        </div>
-                    </a>
-                </div>
-
-            </div>
-        </div>
+        <div offer-summary></div>
 
         <div class="row">
             <div class="col-lg-12">
@@ -108,9 +17,29 @@
                     <div class="list-group-item active">
                         <input type="text" class="form-control" placeholder="buscar">
                     </div>
-                    <div class="list-group-item" ng-repeat="offer in offers">
+                    <div class="list-group-item">
+                        <label class="control-label">Ordenar por:&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                        <label class="checkbox-inline">
+                            <input type="radio" checked name="optradio" ng-click="order('employer')">Empregador
+                            <span class="sortorder" ng-show="predicate === 'employer'" ng-class="{reverse:reverse}"></span>
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="optradio" ng-click="order('cleaners')">Diarista
+                            <span class="sortorder" ng-show="predicate === 'cleaners'" ng-class="{reverse:reverse}"></span>
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="radio" name="optradio" ng-click="order('status')">Status
+                            <span class="sortorder" ng-show="predicate === 'status'" ng-class="{reverse:reverse}"></span>
+                        </label>
+                    </div>
+                    <a class="list-group-item list-group-item-action" dir-paginate="offer in offers | filter:searchtext | orderBy:predicate:reverse | itemsPerPage : 20">
                         <div class="list-group-item-heading">
-                            {{offer.employerDetail.name}}
+                            <span class="h4 text-uppercase">{{offer.employerDetail.name}}</span>
+                            <span class="label label-primary" ng-show="offer.status === 'aceita'">ACEITA</span>
+                            <span class="label label-warning" ng-show="offer.status === 'recusada'">RECUSADA</span>
+                            <span class="label label-danger" ng-show="offer.status === 'cancelada'">CANCELADA</span>
+                            <span class="label label-success" ng-show="offer.status === 'cadastrada'">CADASTRADA</span>
+                            <span class="label label-default">DIARISTAS: {{offer.cleaners.length}}</span>
                         </div>
                         <div class="list-group-item-text">
                             <span ng-show="offer.address !== ''">{{offer.address}}</span>
@@ -118,7 +47,8 @@
                         </div>
 
                         <div></div>
-                    </div>
+                    </a>
+                    <dir-pagination-controls boundary-links="true" ></dir-pagination-controls>
                 </div>
             </div>
         </div>

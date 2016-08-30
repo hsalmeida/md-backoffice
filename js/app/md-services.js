@@ -5,8 +5,8 @@ angular.module("md")
     .factory('Cleaners', function ($mongolabResourceHttp) {
         return $mongolabResourceHttp('cleaners');
     })
-    .factory('Employees', function ($mongolabResourceHttp) {
-        return $mongolabResourceHttp('employees');
+    .factory('Employers', function ($mongolabResourceHttp) {
+        return $mongolabResourceHttp('employers');
     })
     .factory('Offers', function ($mongolabResourceHttp) {
         return $mongolabResourceHttp('offers');
