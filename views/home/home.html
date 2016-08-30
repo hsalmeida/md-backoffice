@@ -39,7 +39,7 @@
                             <span class="label label-warning" ng-show="offer.status === 'recusada'">RECUSADA</span>
                             <span class="label label-danger" ng-show="offer.status === 'cancelada'">CANCELADA</span>
                             <span class="label label-success" ng-show="offer.status === 'cadastrada'">CADASTRADA</span>
-                            <span class="label label-default">DIARISTAS: {{offer.cleaners.length}}</span>
+                            <span class="label label-default">DIARISTAS: {{offer.cleanersSent.length}}</span>
                         </div>
                         <div class="list-group-item-text">
                             <span ng-show="offer.address !== ''">{{offer.address}}</span>

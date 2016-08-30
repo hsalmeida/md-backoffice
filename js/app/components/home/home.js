@@ -18,9 +18,28 @@ angular.module('md').controller('HomeController', ['$scope', '$rootScope', '$sta
             "iron": true,
             "cook": true,
             "price": 0,
-            "create": new Date(),
+            "create": {$date : new Date().toISOString},
+            "day": {$date : new Date().toISOString},
             "status": "",
-            "cleaners": []
+            "lastReport" : {$date : new Date().toISOString},
+            "cleaners": [],
+            "cleanersSent": []
+        };
+
+        $scope.getLastReport = function (lastReport) {
+            var now = new Date();
+            var date = new Date(lastReport);
+
+            var diff = now - date;
+
+            console.log(diff);
+
+            var days= Math.floor(diff / 86400);
+            var hours = Math.floor((diff - (days * 86400 ))/3600);
+            var minutes = Math.floor((diff - (days * 86400 ) - (hours *3600 ))/60);
+            var secs = Math.floor((diff - (days * 86400 ) - (hours *3600 ) - (minutes*60)));
+
+            console.log(days + ' ' + hours + ' ' + minutes + ' ' + secs);
         };
 
         $scope.initHome = function () {
@@ -42,6 +61,9 @@ angular.module('md').controller('HomeController', ['$scope', '$rootScope', '$sta
                         offer.employerDetail = employer;
                     })
                 });
+
+                $scope.registered = $filter('filter')(offers, {status : "cadastrada"});
+                $scope.rejected = $filter('filter')(offers, {status : "recusada"});
 
                 var statusList = $filter('countBy')(offers, 'status');
                 $scope.offerSummary.amountAccepted = statusList.aceita ? statusList.aceita : 0;

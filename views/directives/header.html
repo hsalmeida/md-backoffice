@@ -25,53 +25,45 @@
                     <li>
                         <a class="dropdown-toggle" data-toggle="dropdown">
                             <span class="fa fa-bookmark"></span>
-                            <span class="badge">1</span>
+                            <span class="badge">{{registered.length}}</span>
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu dropdown-messages">
-                            <li>
+                            <li ng-repeat="offer in registered">
                                 <a ui-sref="home">
                                     <div>
-                                        <strong>Empregador Fulano de Tal</strong>
-                                        <span class="pull-right text-muted">29/08/16</span>
+                                        <strong>{{offer.employerDetail.name}}</strong>
+                                        <span class="pull-right text-muted">{{offer.create.$date | date : 'dd/MM/yy HH:mm'}}</span>
                                     </div>
                                     <div>
-                                        Mussum Ipsum, cacilds vidis litro abertis. Admodum accumsan disputationi eu sit.
+                                        <span ng-show="offer.address !== ''">{{offer.address}}</span>
+                                        <span ng-show="offer.address === ''">{{offer.employerDetail.address}}</span>
                                     </div>
                                 </a>
+                                <div class="divider"></div>
                             </li>
                         </ul>
                     </li>
                     <li>
                         <a class="dropdown-toggle" data-toggle="dropdown">
                             <span class="fa fa-bell"></span>
-                            <span class="badge">2</span>
+                            <span class="badge">{{rejected.length}}</span>
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu dropdown-alerts">
-                            <li>
+                            <li ng-repeat="offer in rejected">
                                 <a ui-sref="home">
                                     <div>
                                         <i class="fa fa-exclamation"></i>&nbsp;Oferta Recusada
-                                        <span class="pull-right text-muted small">10 minutos atras</span>
+                                        <span class="pull-right text-muted small"><time am-time-ago="offer.lastReport.$date"></time></span>
                                     </div>
                                     <div>
-                                        Empregador Ciclano de Almeida Silva, São Cristovão
-                                        01/09/16 as 15h
+                                        <strong>{{offer.employerDetail.name}}</strong>,
+                                        <span ng-show="offer.address !== ''">{{offer.address}}</span>
+                                        <span ng-show="offer.address === ''">{{offer.employerDetail.address}}</span>
+                                        {{offer.create.$date | date : 'dd/MM/yy HH:mm'}}
                                     </div>
                                 </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a ui-sref="home">
-                                    <div>
-                                        <i class="fa fa-exclamation"></i>&nbsp;Oferta Recusada
-                                        <span class="pull-right text-muted small">20 minutos atras</span>
-                                    </div>
-                                    <div>
-                                        Empregador Ciclano de Almeida Silva, São Cristovão
-                                        01/09/16 as 15h
-                                    </div>
-                                </a>
+                                <div class="divider"></div>
                             </li>
                         </ul>
                     </li>

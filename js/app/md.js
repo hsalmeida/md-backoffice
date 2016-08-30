@@ -1,7 +1,10 @@
 angular.module("md", [
     'ui.router', 'ngResource', 'mongolabResourceHttp', 'ngAnimate', 'ui.bootstrap', 'ngMessages',
-    'ngCookies', 'angular.filter', 'angularUtils.directives.dirPagination'
+    'ngCookies', 'angular.filter', 'angularUtils.directives.dirPagination', 'angularMoment'
 ])
+    .run(function(amMoment) {
+        amMoment.changeLocale('pt-br');
+    })
     .run(function ($rootScope, $state, $cookies) {
 
         $rootScope.$on('$stateChangeStart', function (event, toState, toParams) {
