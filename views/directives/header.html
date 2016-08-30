@@ -36,8 +36,8 @@
                                         <span class="pull-right text-muted">{{offer.create.$date | date : 'dd/MM/yy HH:mm'}}</span>
                                     </div>
                                     <div>
-                                        <span ng-show="offer.address !== ''">{{offer.address}}</span>
-                                        <span ng-show="offer.address === ''">{{offer.employerDetail.address}}</span>
+                                        <span ng-show="offer.address !== ''">{{offer.completeAddress}}</span>
+                                        <span ng-show="offer.address === ''">{{offer.employerDetail.completeAddress}}</span>
                                     </div>
                                 </a>
                                 <div class="divider"></div>
@@ -58,8 +58,8 @@
                                     </div>
                                     <div>
                                         <strong>{{offer.employerDetail.name}}</strong>,
-                                        <span ng-show="offer.address !== ''">{{offer.address}}</span>
-                                        <span ng-show="offer.address === ''">{{offer.employerDetail.address}}</span>
+                                        <span ng-show="offer.completeAddress !== ''">{{offer.completeAddress}}</span>
+                                        <span ng-show="offer.completeAddress === ''">{{offer.employerDetail.completeAddress}}</span>
                                         {{offer.create.$date | date : 'dd/MM/yy HH:mm'}}
                                     </div>
                                 </a>

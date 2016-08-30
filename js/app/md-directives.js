@@ -33,6 +33,13 @@ angular.module('md')
             templateUrl: 'views/directives/refuse-list.html'
         };
     })
+    .directive('offerList', function () {
+        return {
+            restrict: 'A',
+            replace: true,
+            templateUrl: 'views/directives/offer-list.html'
+        };
+    })
     .directive('offerSummary', function () {
         return {
             restrict: 'A',

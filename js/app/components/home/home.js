@@ -13,7 +13,8 @@ angular.module('md').controller('HomeController', ['$scope', '$rootScope', '$sta
         $scope.offers = [];
         $scope.offer = {
             "employer": "",
-            "address": "",
+            "address": {},
+            "completeAddress" : "",
             "bedrooms": 1,
             "iron": true,
             "cook": true,
