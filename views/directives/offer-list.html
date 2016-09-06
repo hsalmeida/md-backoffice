@@ -17,8 +17,8 @@
             <span class="sortorder" ng-show="predicate === 'status'" ng-class="{reverse:reverse}"></span>
         </label>
     </div>
-    <a class="list-group-item list-group-item-action" dir-paginate="offer in offers | filter:searchtext | orderBy:predicate:reverse | itemsPerPage : 20">
-        <div class="list-group-item-heading">
+    <a class="list-group-item" dir-paginate="offer in offers | filter:searchtext | orderBy:predicate:reverse | itemsPerPage : 20">
+        <div class="list-group-item-heading list-group-item-action" ng-click="setselectedrow($index)">
             <span class="h4 text-uppercase">{{offer.employerDetail.name}}</span>
             <span class="label label-primary" ng-show="offer.status === 'aceita'">ACEITA</span>
             <span class="label label-warning" ng-show="offer.status === 'recusada'">RECUSADA</span>
@@ -31,7 +31,15 @@
             <span ng-show="offer.completeAddress === ''">{{offer.employerDetail.completeAddress}}</span>
         </div>
 
-        <div></div>
+        <div class="list-group list-cleaners" ng-class="{'list-cleaners-show':$index === selectedrow}">
+            <div class="list-group-item active">
+                Diaristas
+            </div>
+            <div class="list-group-item" ng-repeat="cleaner in offer.cleanersSent">
+                <div>{{cleaner}}</div>
+                {{cleaner}}
+            </div>
+        </div>
     </a>
     <dir-pagination-controls boundary-links="true" ></dir-pagination-controls>
 </div>

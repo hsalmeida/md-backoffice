@@ -1,0 +1,230 @@
+
+.progress-circular {
+    width: 60px;
+    height: 60px;
+    position: relative
+}
+
+.progress-circular-center {
+    margin-right: auto;
+    margin-left: auto
+}
+
+.progress-circular-gap {
+    border-top: 2px solid #ff4081;
+    position: absolute;
+    top: 0;
+    right: 29px;
+    bottom: 0;
+    left: 29px
+}
+
+.modal-m {
+    text-align: center;
+}
+
+.progress-circular-left {
+    left: 0
+}
+
+.progress-circular-orange .progress-circular-gap {
+    border-top-color: #f89a46
+}
+
+.progress-circular-inline {
+    display: inline-block;
+    margin-top: 35%
+}
+
+.progress-circular-inner {
+    -webkit-animation: pcircular-inner-rotate 5.25s cubic-bezier(.35, 0, .25, 1) infinite;
+    animation: pcircular-inner-rotate 5.25s cubic-bezier(.35, 0, .25, 1) infinite;
+    height: 60px;
+    position: relative;
+    width: 60px;
+    will-change: transform
+}
+
+.progress-circular-left,
+.progress-circular-right {
+    height: 60px;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    width: 30px
+}
+
+.progress-circular-right {
+    right: 0
+}
+
+.progress-circular-spinner {
+    border: 4px solid #f89a46;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    height: 60px;
+    position: absolute;
+    top: 0;
+    width: 60px;
+    will-change: transform
+}
+
+.progress-circular-left .progress-circular-spinner {
+    -webkit-animation: pcircular-spinner-left 1.3125s cubic-bezier(.35, 0, .5, 1) infinite;
+    animation: pcircular-spinner-left 1.3125s cubic-bezier(.35, 0, .5, 1) infinite;
+    border-right-color: transparent;
+    left: 0
+}
+
+.progress-circular-right .progress-circular-spinner {
+    -webkit-animation: pcircular-spinner-right 1.3125s cubic-bezier(.35, 0, .5, 1) infinite;
+    animation: pcircular-spinner-right 1.3125s cubic-bezier(.35, 0, .5, 1) infinite;
+    border-left-color: transparent;
+    right: 0
+}
+
+.progress-circular-orange .progress-circular-spinner {
+    border-top-color: #f89a46
+}
+
+.progress-circular-orange .progress-circular-left .progress-circular-spinner {
+    border-left-color: #f89a46
+}
+
+.progress-circular-orange .progress-circular-right .progress-circular-spinner {
+    border-right-color: #f89a46
+}
+
+.progress-circular-wrapper {
+    -webkit-animation: pcircular-wrapper-rotate 2.91667s linear infinite;
+    animation: pcircular-wrapper-rotate 2.91667s linear infinite;
+    will-change: transform
+}
+
+@-webkit-keyframes pcircular-inner-rotate {
+    12.5% {
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg)
+    }
+    25% {
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg)
+    }
+    37.5% {
+        -webkit-transform: rotate(405deg);
+        transform: rotate(405deg)
+    }
+    50% {
+        -webkit-transform: rotate(540deg);
+        transform: rotate(540deg)
+    }
+    62.5% {
+        -webkit-transform: rotate(675deg);
+        transform: rotate(675deg)
+    }
+    75% {
+        -webkit-transform: rotate(810deg);
+        transform: rotate(810deg)
+    }
+    87.5% {
+        -webkit-transform: rotate(945deg);
+        transform: rotate(945deg)
+    }
+    100% {
+        -webkit-transform: rotate(1080deg);
+        transform: rotate(1080deg)
+    }
+}
+
+@keyframes pcircular-inner-rotate {
+    12.5% {
+        -webkit-transform: rotate(135deg);
+        transform: rotate(135deg)
+    }
+    25% {
+        -webkit-transform: rotate(270deg);
+        transform: rotate(270deg)
+    }
+    37.5% {
+        -webkit-transform: rotate(405deg);
+        transform: rotate(405deg)
+    }
+    50% {
+        -webkit-transform: rotate(540deg);
+        transform: rotate(540deg)
+    }
+    62.5% {
+        -webkit-transform: rotate(675deg);
+        transform: rotate(675deg)
+    }
+    75% {
+        -webkit-transform: rotate(810deg);
+        transform: rotate(810deg)
+    }
+    87.5% {
+        -webkit-transform: rotate(945deg);
+        transform: rotate(945deg)
+    }
+    100% {
+        -webkit-transform: rotate(1080deg);
+        transform: rotate(1080deg)
+    }
+}
+
+@-webkit-keyframes pcircular-spinner-left {
+    0%, 100% {
+        -webkit-transform: rotate(130deg);
+        transform: rotate(130deg)
+    }
+    50% {
+        -webkit-transform: rotate(-5deg);
+        transform: rotate(-5deg)
+    }
+}
+
+@keyframes pcircular-spinner-left {
+    0%, 100% {
+        -webkit-transform: rotate(130deg);
+        transform: rotate(130deg)
+    }
+    50% {
+        -webkit-transform: rotate(-5deg);
+        transform: rotate(-5deg)
+    }
+}
+
+@-webkit-keyframes pcircular-spinner-right {
+    0%, 100% {
+        -webkit-transform: rotate(-130deg);
+        transform: rotate(-130deg)
+    }
+    50% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg)
+    }
+}
+
+@keyframes pcircular-spinner-right {
+    0%, 100% {
+        -webkit-transform: rotate(-130deg);
+        transform: rotate(-130deg)
+    }
+    50% {
+        -webkit-transform: rotate(5deg);
+        transform: rotate(5deg)
+    }
+}
+
+@-webkit-keyframes pcircular-wrapper-rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes pcircular-wrapper-rotate {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg)
+    }
+}

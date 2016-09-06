@@ -27,6 +27,14 @@ angular.module('md').controller('HomeController', ['$scope', '$rootScope', '$sta
             "cleanersSent": []
         };
 
+        $scope.setselectedrow = function (index) {
+            if ($scope.selectedrow === index) {
+                $scope.selectedrow = -1;
+            } else {
+                $scope.selectedrow = index;
+            }
+        };
+
         $scope.getLastReport = function (lastReport) {
             var now = new Date();
             var date = new Date(lastReport);
