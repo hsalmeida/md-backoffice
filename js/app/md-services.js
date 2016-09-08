@@ -13,4 +13,7 @@ angular.module("md")
     })
     .factory('Rating', function ($mongolabResourceHttp) {
         return $mongolabResourceHttp('rating');
+    })
+    .factory('Calendars', function ($mongolabResourceHttp) {
+        return $mongolabResourceHttp('calendars');
     });

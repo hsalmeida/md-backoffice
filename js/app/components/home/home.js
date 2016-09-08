@@ -1,6 +1,6 @@
 angular.module('md').controller('HomeController', ['$scope', '$rootScope', '$state', 'Users', '$cookies',
-    'Offers', 'Employers', '$filter',
-    function ($scope, $rootScope, $state, Users, $cookies, Offers, Employers, $filter) {
+    'Offers', 'Employers', '$filter', 'Cleaners', '$uibModal',
+    function ($scope, $rootScope, $state, Users, $cookies, Offers, Employers, $filter, Cleaners, $uibModal) {
         $rootScope.bodybg = {
             background: '#FFFFFF'
         };
@@ -10,19 +10,20 @@ angular.module('md').controller('HomeController', ['$scope', '$rootScope', '$sta
             "amountRate": 0,
             "amountCanceled": 0
         };
+        $scope.cacheCleaners = [];
         $scope.offers = [];
         $scope.offer = {
             "employer": "",
             "address": {},
-            "completeAddress" : "",
+            "completeAddress": "",
             "bedrooms": 1,
             "iron": true,
             "cook": true,
             "price": 0,
-            "create": {$date : new Date().toISOString},
-            "day": {$date : new Date().toISOString},
+            "create": {$date: new Date().toISOString},
+            "day": {$date: new Date().toISOString},
             "status": "",
-            "lastReport" : {$date : new Date().toISOString},
+            "lastReport": {$date: new Date().toISOString},
             "cleaners": [],
             "cleanersSent": []
         };
@@ -43,13 +44,21 @@ angular.module('md').controller('HomeController', ['$scope', '$rootScope', '$sta
 
             console.log(diff);
 
-            var days= Math.floor(diff / 86400);
-            var hours = Math.floor((diff - (days * 86400 ))/3600);
-            var minutes = Math.floor((diff - (days * 86400 ) - (hours *3600 ))/60);
-            var secs = Math.floor((diff - (days * 86400 ) - (hours *3600 ) - (minutes*60)));
+            var days = Math.floor(diff / 86400);
+            var hours = Math.floor((diff - (days * 86400 )) / 3600);
+            var minutes = Math.floor((diff - (days * 86400 ) - (hours * 3600 )) / 60);
+            var secs = Math.floor((diff - (days * 86400 ) - (hours * 3600 ) - (minutes * 60)));
 
             console.log(days + ' ' + hours + ' ' + minutes + ' ' + secs);
         };
+
+        function insertCleanerInList(list, cleaner) {
+            angular.forEach(list, function (cSent, i) {
+                if (cSent.oid === cleaner._id.$oid) {
+                    cSent.cleaner = cleaner;
+                }
+            });
+        }
 
         $scope.initHome = function () {
 
@@ -64,15 +73,20 @@ angular.module('md').controller('HomeController', ['$scope', '$rootScope', '$sta
             };
 
             Offers.all().then(function (offers) {
-
                 angular.forEach(offers, function (offer, offerId) {
                     Employers.getById(offer.employer).then(function (employer) {
                         offer.employerDetail = employer;
-                    })
+                    });
+                    for (var z = 0; z < offer.cleanersSent.length; z++) {
+                        var cSent = offer.cleanersSent[z];
+                        Cleaners.getById(cSent.oid).then(function (cleaner) {
+                            insertCleanerInList(offer.cleanersSent, cleaner);
+                        });
+                    }
                 });
 
-                $scope.registered = $filter('filter')(offers, {status : "cadastrada"});
-                $scope.rejected = $filter('filter')(offers, {status : "recusada"});
+                $scope.registered = $filter('filter')(offers, {status: "cadastrada"});
+                $scope.rejected = $filter('filter')(offers, {status: "recusada"});
 
                 var statusList = $filter('countBy')(offers, 'status');
                 $scope.offerSummary.amountAccepted = statusList.aceita ? statusList.aceita : 0;
@@ -88,6 +102,23 @@ angular.module('md').controller('HomeController', ['$scope', '$rootScope', '$sta
                 console.log('error');
                 waitingCircular.hide();
             });
+
+        };
+
+        $scope.cleanerDetail = function (cleaner) {
+
+            $uibModal
+                .open({
+                    templateUrl: 'views/modal/cleaner-detail.html',
+                    controller: 'ModalCleanerController',
+                    resolve: {
+                        cleaner: function () {
+                            return cleaner;
+                        }
+                    }
+                }).result.then(function () {
+                }, function () {
+                });
 
         };
     }]);

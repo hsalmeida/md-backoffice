@@ -18,8 +18,8 @@
         </label>
     </div>
     <a class="list-group-item" dir-paginate="offer in offers | filter:searchtext | orderBy:predicate:reverse | itemsPerPage : 20">
-        <div class="list-group-item-heading list-group-item-action" ng-click="setselectedrow($index)">
-            <span class="h4 text-uppercase">{{offer.employerDetail.name}}</span>
+        <div class="list-group-item-heading" ng-click="setselectedrow($index)">
+            <span class="h4 text-uppercase list-group-item-action">{{offer.employerDetail.name}}</span>
             <span class="label label-primary" ng-show="offer.status === 'aceita'">ACEITA</span>
             <span class="label label-warning" ng-show="offer.status === 'recusada'">RECUSADA</span>
             <span class="label label-danger" ng-show="offer.status === 'cancelada'">CANCELADA</span>
@@ -36,8 +36,12 @@
                 Diaristas
             </div>
             <div class="list-group-item" ng-repeat="cleaner in offer.cleanersSent">
-                <div>{{cleaner}}</div>
-                {{cleaner}}
+                <span class="list-group-item-heading list-group-item-action" ng-click="cleanerDetail(cleaner.cleaner)">{{cleaner.cleaner.name}}</span>
+                <span class="label label-success" ng-show="cleaner.status === 'enviada'">ENVIADA</span>
+                <span class="label label-primary" ng-show="cleaner.status === 'aceita'">ACEITA</span>
+                <span class="label label-warning" ng-show="cleaner.status === 'recusada'">RECUSADA</span>
+                <span ng-show="cleaner.push === 'read'" class="push-read"><i class="fa fa-check"></i><i class="fa fa-check"></i></span>
+                <span ng-show="cleaner.push === 'sent'" class="push-sent"><i class="fa fa-check"></i></span>
             </div>
         </div>
     </a>

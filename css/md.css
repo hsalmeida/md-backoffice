@@ -94,8 +94,30 @@ body {
 }
 
 
+.list-group-item-action:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #5687e7;
+    visibility: hidden;
+    -webkit-transform: scaleX(0);
+    transform: scaleX(0);
+    -webkit-transition: all 0.3s ease-in-out 0s;
+    transition: all 0.3s ease-in-out 0s;
+}
+
+.list-group-item-action:hover:before {
+    visibility: visible;
+    -webkit-transform: scaleX(1);
+    transform: scaleX(1);
+}
+
 .list-group-item-action {
     cursor: pointer;
+    position: relative;
 }
 
 .tag {
@@ -138,6 +160,14 @@ body {
 
 .navbar-top-links .dropdown-menu li a div {
     white-space: normal;
+}
+
+.push-read {
+    color: #5687e7;
+}
+
+.push-sent {
+    color: #40cd65;
 }
 
 @media (min-width: 768px) {
