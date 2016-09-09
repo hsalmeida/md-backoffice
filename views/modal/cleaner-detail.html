@@ -2,7 +2,29 @@
     <h4 class="modal-title">Detalhes da Diarista</h4>
 </div>
 <div class="modal-body" ng-init="initModalCleaner()">
-    {{cleaner}}
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4>{{cleaner.name}}</h4>
+        </div>
+        <div class="panel-body">
+            <p><strong>Endereço:&nbsp;</strong><span>{{cleaner.completeAddress}}</span></p>
+
+            <p><strong>Identidade:&nbsp;</strong><span>{{cleaner.idNumber}}</span></p>
+
+            <p><strong>Telefones:&nbsp;</strong><span>{{cleaner.number}}</span></p>
+
+            <p><strong>Agenda:&nbsp;</strong></p>
+
+            <div class="row">
+                <div class="col-lg-2 col-md-2 col-xs-3" ng-repeat="available in cleaner.calendar.available">
+                    <div class="panel panel-info">
+                        <div class="panel-heading text-center">{{available.$date | amDateFormat : 'ddd'}}</div>
+                        <div class="panel-body text-center">{{available.$date | amDateFormat : 'DD/MM'}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="modal-footer">
     <button type="button" class="btn btn-success" ng-click="ok()">OK</button>
