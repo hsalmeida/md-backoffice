@@ -4,22 +4,25 @@
     </div>
     <div class="list-group-item">
         <label class="control-label">Ordenar por:&nbsp;&nbsp;&nbsp;&nbsp;</label>
-        <label class="checkbox-inline">
+        <label class="radio-inline">
             <input type="radio" checked name="optradio" ng-click="order('employer')">Empregador
             <span class="sortorder" ng-show="predicate === 'employer'" ng-class="{reverse:reverse}"></span>
         </label>
-        <label class="checkbox-inline">
+        <label class="radio-inline">
             <input type="radio" name="optradio" ng-click="order('cleaners')">Diarista
             <span class="sortorder" ng-show="predicate === 'cleaners'" ng-class="{reverse:reverse}"></span>
         </label>
-        <label class="checkbox-inline">
+        <label class="radio-inline">
             <input type="radio" name="optradio" ng-click="order('status')">Status
             <span class="sortorder" ng-show="predicate === 'status'" ng-class="{reverse:reverse}"></span>
         </label>
     </div>
     <a class="list-group-item" dir-paginate="offer in offers | filter:searchtext | orderBy:predicate:reverse | itemsPerPage : 20">
         <div class="list-group-item-heading" ng-click="setselectedrow($index)">
-            <span class="h4 text-uppercase list-group-item-action">{{offer.employerDetail.name}}</span>
+            <span class="label label-default medium">{{offer.day.$date | amDateFormat : 'ddd DD/MM'}}</span>&nbsp;
+            <span class="h4 text-uppercase list-group-item-action">
+                {{offer.employerDetail.name}}
+            </span>
             <span class="label label-primary" ng-show="offer.status === 'aceita'">ACEITA</span>
             <span class="label label-warning" ng-show="offer.status === 'recusada'">RECUSADA</span>
             <span class="label label-danger" ng-show="offer.status === 'cancelada'">CANCELADA</span>

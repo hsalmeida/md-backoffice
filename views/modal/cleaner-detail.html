@@ -16,10 +16,10 @@
             <p><strong>Agenda:&nbsp;</strong></p>
 
             <div class="row">
-                <div class="col-lg-2 col-md-2 col-xs-3" ng-repeat="available in cleaner.calendar.available">
+                <div class="col-lg-2 col-md-2 col-xs-4" ng-repeat="available in cleaner.calendar.available">
                     <div class="panel panel-info">
                         <div class="panel-heading text-center">{{available.$date | amDateFormat : 'ddd'}}</div>
-                        <div class="panel-body text-center">{{available.$date | amDateFormat : 'DD/MM'}}</div>
+                        <div class="panel-body text-center"><strong>{{available.$date | amDateFormat : 'DD/MM'}}</strong></div>
                     </div>
                 </div>
             </div>
