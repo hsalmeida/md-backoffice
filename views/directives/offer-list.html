@@ -41,10 +41,10 @@
             <div class="list-group-item" ng-repeat="cleaner in offer.cleanersSent">
                 <span class="list-group-item-heading list-group-item-action" ng-click="cleanerDetail(cleaner.cleaner)">{{cleaner.cleaner.name}}</span>
                 <span class="label label-success" ng-show="cleaner.status === 'enviada'">ENVIADA</span>
+                <span class="label label-info" ng-show="cleaner.status === 'recebida'">RECEBIDA</span>
                 <span class="label label-primary" ng-show="cleaner.status === 'aceita'">ACEITA</span>
                 <span class="label label-warning" ng-show="cleaner.status === 'recusada'">RECUSADA</span>
-                <span ng-show="cleaner.push === 'read'" class="push-read"><i class="fa fa-check"></i><i class="fa fa-check"></i></span>
-                <span ng-show="cleaner.push === 'sent'" class="push-sent"><i class="fa fa-check"></i></span>
+                <span class="text-muted"><time am-time-ago="cleaner.date.$date"></time></span>
             </div>
         </div>
     </a>
