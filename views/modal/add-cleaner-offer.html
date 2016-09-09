@@ -1,0 +1,26 @@
+<div class="modal-header text-center">
+    <h4 class="modal-title">Adicionar Diarista/Oferta</h4>
+</div>
+<div class="modal-body" ng-init="initAddlCleanerOffer()">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h4>Diaristas</h4>
+        </div>
+        <div class="panel-body">
+            <div class="list-group">
+                <div class="list-group-item" ng-repeat="cleaner in cleaners">
+                    <div class="list-group-item-heading">
+                        {{cleaner.name}}
+                    </div>
+                    <div class="list-group-item-text">
+                        {{cleaner.completeAddress}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button type="button" class="btn btn-danger" ng-click="cancel()">Cancelar</button>
+    <button type="button" class="btn btn-success" ng-click="add()">Adicionar</button>
+</div>

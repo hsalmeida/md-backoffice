@@ -36,22 +36,6 @@ angular.module('md').controller('HomeController', ['$scope', '$rootScope', '$sta
             }
         };
 
-        $scope.getLastReport = function (lastReport) {
-            var now = new Date();
-            var date = new Date(lastReport);
-
-            var diff = now - date;
-
-            console.log(diff);
-
-            var days = Math.floor(diff / 86400);
-            var hours = Math.floor((diff - (days * 86400 )) / 3600);
-            var minutes = Math.floor((diff - (days * 86400 ) - (hours * 3600 )) / 60);
-            var secs = Math.floor((diff - (days * 86400 ) - (hours * 3600 ) - (minutes * 60)));
-
-            console.log(days + ' ' + hours + ' ' + minutes + ' ' + secs);
-        };
-
         function insertCleanerInList(list, cleaner) {
             angular.forEach(list, function (cSent, i) {
                 if (cSent.oid === cleaner._id.$oid) {
@@ -64,7 +48,7 @@ angular.module('md').controller('HomeController', ['$scope', '$rootScope', '$sta
 
             waitingCircular.show();
 
-            $scope.predicate = 'employer';
+            $scope.predicate = 'day';
             $scope.reverse = false;
 
             $scope.order = function (predicate) {
@@ -114,6 +98,23 @@ angular.module('md').controller('HomeController', ['$scope', '$rootScope', '$sta
                     resolve: {
                         cleaner: function () {
                             return cleaner;
+                        }
+                    }
+                }).result.then(function () {
+                }, function () {
+                });
+
+        };
+
+        $scope.addCleaners = function (offer) {
+
+            $uibModal
+                .open({
+                    templateUrl: 'views/modal/add-cleaner-offer.html',
+                    controller: 'ModalAddCleanerOfferController',
+                    resolve: {
+                        offer: function () {
+                            return offer;
                         }
                     }
                 }).result.then(function () {
